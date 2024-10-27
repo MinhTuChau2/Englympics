@@ -125,12 +125,19 @@ void Game::displayPieces() {
 
 void Game::playGame() {
     bool gameFinished=false;
-    while (!gameFinished) {  // Example turn loop for 10 rounds
+    int turn;
+    while (!gameFinished) {
         for (int playerId : playerTurnOrder) {
             Player* player = players[playerId];
             std::cout << "Player " << player->id << "'s turn:\n";
-            if (!player->pieces.empty()) {
-                player->playPiece(player->pieces[0]);
+            if(playerId==0){
+                if (!player->pieces.empty())
+                {
+                    player->playPiece(player->pieces[0]);
+                }
+            }
+            else{
+                
             }
             std::cout << "Player " << player->id << " score: " << player->score << "\n";
         }
