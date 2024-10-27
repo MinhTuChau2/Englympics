@@ -1,7 +1,7 @@
 #include <iostream>
 #include "game.h"
 
-Player::Player(int id) : id(id), score(0) {}
+Player::Player(int id) : id(id), score(0),gameFinished(false) {}
 
 void Player::playPiece(Piece* piece) {
     if (piece->playCount > 0) {
@@ -55,6 +55,7 @@ Game::Game() {
     loadPieces();
     setupPlayers();
     choosePlayOrder();  // Ask the player if they want to go first or last
+
 }
 
 Game::~Game() {
@@ -123,7 +124,8 @@ void Game::displayPieces() {
 }
 
 void Game::playGame() {
-    for (int turn = 0; turn < 10; ++turn) {  // Example turn loop for 10 rounds
+    bool gameFinished=false;
+    while (!gameFinished) {  // Example turn loop for 10 rounds
         for (int playerId : playerTurnOrder) {
             Player* player = players[playerId];
             std::cout << "Player " << player->id << "'s turn:\n";

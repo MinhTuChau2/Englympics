@@ -9,6 +9,7 @@ class Player {
 public:
     int id;
     int score;
+    bool gameFinished;
     std::vector<Piece*> pieces;
 
     Player(int id);
