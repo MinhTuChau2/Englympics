@@ -43,6 +43,8 @@ public:
     void choosePlayOrder();    // New method to choose play order
     void playGame();
     void displayPieces();
+    bool hasPlayed();
+    bool validMove();
 };
 
 #endif
